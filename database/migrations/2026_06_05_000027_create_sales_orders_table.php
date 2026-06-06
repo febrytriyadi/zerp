@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('order_date');
             $table->foreignId('customer_id')->constrained()->cascadeOnDelete();
             $table->text('customer_address')->nullable();
-            $table->foreignId('payment_term_id')->constrained('payment_terms')->nullOnDelete();
+$table->foreignId('payment_term_id')->nullable()->constrained('payment_terms')->nullOnDelete();
             $table->foreignId('currency_id')->constrained()->cascadeOnDelete();
             $table->decimal('exchange_rate', 15, 4)->default(1);
             $table->foreignId('tax_rate_id')->nullable()->constrained('tax_rates')->nullOnDelete();

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('packing_number', 50);
             $table->date('packing_date');
             $table->foreignId('sales_order_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('delivery_order_id')->nullable()->constrained('delivery_orders')->nullOnDelete();
+            $table->unsignedBigInteger('delivery_order_id')->nullable()->index();
             $table->foreignId('warehouse_id')->constrained('warehouses')->cascadeOnDelete();
             $table->string('status', 20);
             $table->foreignId('created_by')->constrained('users')->cascadeOnDelete();

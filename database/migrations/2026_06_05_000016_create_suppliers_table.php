@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('email', 100);
             $table->text('address')->nullable();
             $table->string('tax_id', 50)->nullable();
-            $table->foreignId('payment_term_id')->constrained('payment_terms')->nullOnDelete();
-            $table->foreignId('chart_of_account_id')->constrained()->nullOnDelete();
+$table->foreignId('payment_term_id')->nullable()->constrained('payment_terms')->nullOnDelete();
+$table->foreignId('chart_of_account_id')->nullable()->constrained()->nullOnDelete();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
             $table->softDeletes();
