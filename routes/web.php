@@ -13,6 +13,9 @@ use App\Http\Controllers\Finance\AssetController;
 use App\Http\Controllers\Finance\TaxInvoiceController;
 use App\Http\Controllers\Finance\TaxReportController;
 use App\Http\Controllers\Finance\AccrualController;
+use App\Http\Controllers\Finance\BankStatementController;
+use App\Http\Controllers\Finance\CheckBookController;
+use App\Http\Controllers\Finance\BankAccountBalanceController;
 use App\Http\Controllers\Finance\ClosingJournalController;
 use App\Http\Controllers\Finance\CashDisbursementController;
 use App\Http\Controllers\Accounting\JournalEntryController;
@@ -97,6 +100,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('finance/accruals', AccrualController::class);
         Route::post('finance/accruals/{accrual}/recognize', [AccrualController::class, 'recognize'])->name('accruals.recognize');
         Route::post('finance/accruals/{accrual}/void', [AccrualController::class, 'void'])->name('accruals.void');
+
+        Route::resource('finance/bank-statements', BankStatementController::class);
+        Route::post('finance/bank-statements/{bankStatement}/post', [BankStatementController::class, 'post'])->name('bank-statements.post');
+        Route::post('finance/bank-statements/import', [BankStatementController::class, 'import'])->name('bank-statements.import');
+        Route::post('finance/bank-statement-lines/{line}/match', [BankStatementController::class, 'matchLine'])->name('bank-statement-lines.match');
+        Route::post('finance/bank-statement-lines/{line}/unmatch', [BankStatementController::class, 'unmatchLine'])->name('bank-statement-lines.unmatch');
+        Route::resource('finance/check-books', CheckBookController::class);
+        Route::get('finance/bank-balances', [BankAccountBalanceController::class, 'index'])->name('bank-balances.index');
+        Route::post('finance/bank-balances/calculate', [BankAccountBalanceController::class, 'create'])->name('bank-balances.calculate');
     });
 
     // Accounting

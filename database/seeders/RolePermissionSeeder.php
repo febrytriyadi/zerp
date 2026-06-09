@@ -28,6 +28,7 @@ class RolePermissionSeeder extends Seeder
             'fixed-asset',
             'tax-invoice', 'tax-report',
             'closing-journal', 'accrual',
+            'bank-statement', 'check-book', 'bank-balance',
             'report', 'dashboard', 'user', 'role',
         ];
 
