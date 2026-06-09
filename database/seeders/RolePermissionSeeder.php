@@ -27,6 +27,7 @@ class RolePermissionSeeder extends Seeder
             'assembly', 'inventory-movement',
             'fixed-asset',
             'tax-invoice', 'tax-report',
+            'closing-journal', 'accrual',
             'report', 'dashboard', 'user', 'role',
         ];
 

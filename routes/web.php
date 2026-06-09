@@ -12,6 +12,8 @@ use App\Http\Controllers\Finance\CashReceiptController;
 use App\Http\Controllers\Finance\AssetController;
 use App\Http\Controllers\Finance\TaxInvoiceController;
 use App\Http\Controllers\Finance\TaxReportController;
+use App\Http\Controllers\Finance\AccrualController;
+use App\Http\Controllers\Finance\ClosingJournalController;
 use App\Http\Controllers\Finance\CashDisbursementController;
 use App\Http\Controllers\Accounting\JournalEntryController;
 use App\Http\Controllers\Sales\SalesQuotationController;
@@ -88,6 +90,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::resource('finance/tax-invoices', TaxInvoiceController::class);
         Route::resource('finance/tax-reports', TaxReportController::class);
+        Route::resource('finance/closing-journals', ClosingJournalController::class);
+        Route::post('finance/closing-journals/{closingJournal}/post', [ClosingJournalController::class, 'post'])->name('closing-journals.post');
+        Route::post('finance/closing-journals/{closingJournal}/void', [ClosingJournalController::class, 'void'])->name('closing-journals.void');
+
+        Route::resource('finance/accruals', AccrualController::class);
+        Route::post('finance/accruals/{accrual}/recognize', [AccrualController::class, 'recognize'])->name('accruals.recognize');
+        Route::post('finance/accruals/{accrual}/void', [AccrualController::class, 'void'])->name('accruals.void');
     });
 
     // Accounting
