@@ -17,6 +17,9 @@ use App\Http\Controllers\Finance\BankStatementController;
 use App\Http\Controllers\Finance\CheckBookController;
 use App\Http\Controllers\Finance\BankAccountBalanceController;
 use App\Http\Controllers\Finance\ClosingJournalController;
+use App\Http\Controllers\Finance\DunningLevelController;
+use App\Http\Controllers\Finance\DunningController;
+use App\Http\Controllers\Finance\PaymentRunController;
 use App\Http\Controllers\Finance\CashDisbursementController;
 use App\Http\Controllers\Accounting\JournalEntryController;
 use App\Http\Controllers\Sales\SalesQuotationController;
@@ -106,9 +109,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('finance/bank-statements/import', [BankStatementController::class, 'import'])->name('bank-statements.import');
         Route::post('finance/bank-statement-lines/{line}/match', [BankStatementController::class, 'matchLine'])->name('bank-statement-lines.match');
         Route::post('finance/bank-statement-lines/{line}/unmatch', [BankStatementController::class, 'unmatchLine'])->name('bank-statement-lines.unmatch');
+        Route::resource('finance/payment-runs', PaymentRunController::class)->parameters(['payment-runs' => 'paymentRun']);
+        Route::post('finance/payment-runs/{paymentRun}/generate', [PaymentRunController::class, 'generate'])->name('payment-runs.generate');
+        Route::post('finance/payment-runs/{paymentRun}/post', [PaymentRunController::class, 'post'])->name('payment-runs.post');
+        Route::post('finance/payment-runs/{paymentRun}/void', [PaymentRunController::class, 'void'])->name('payment-runs.void');
         Route::resource('finance/check-books', CheckBookController::class);
         Route::get('finance/bank-balances', [BankAccountBalanceController::class, 'index'])->name('bank-balances.index');
         Route::post('finance/bank-balances/calculate', [BankAccountBalanceController::class, 'create'])->name('bank-balances.calculate');
+
+        Route::resource('finance/dunning-levels', DunningLevelController::class);
+        Route::resource('finance/dunning-runs', DunningController::class);
+        Route::post('finance/dunning-runs/generate', [DunningController::class, 'generate'])->name('dunning-runs.generate');
+        Route::post('finance/dunning-runs/{dunningRun}/post', [DunningController::class, 'post'])->name('dunning-runs.post');
     });
 
     // Accounting
