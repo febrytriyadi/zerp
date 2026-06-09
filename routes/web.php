@@ -10,6 +10,8 @@ use App\Http\Controllers\Master\ProductController;
 use App\Http\Controllers\Master\WarehouseController;
 use App\Http\Controllers\Finance\CashReceiptController;
 use App\Http\Controllers\Finance\AssetController;
+use App\Http\Controllers\Finance\TaxInvoiceController;
+use App\Http\Controllers\Finance\TaxReportController;
 use App\Http\Controllers\Finance\CashDisbursementController;
 use App\Http\Controllers\Accounting\JournalEntryController;
 use App\Http\Controllers\Sales\SalesQuotationController;
@@ -83,6 +85,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('finance/assets/{asset}/sell', [AssetController::class, 'sell'])->name('assets.sell');
         Route::post('finance/assets/{asset}/retire', [AssetController::class, 'retire'])->name('assets.retire');
         Route::post('finance/assets/{asset}/revalue', [AssetController::class, 'revalue'])->name('assets.revalue');
+
+        Route::resource('finance/tax-invoices', TaxInvoiceController::class);
+        Route::resource('finance/tax-reports', TaxReportController::class);
     });
 
     // Accounting
