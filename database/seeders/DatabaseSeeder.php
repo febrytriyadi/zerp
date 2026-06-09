@@ -226,6 +226,7 @@ class DatabaseSeeder extends Seeder
             ['cash_receipt', 'CR', 'CR-{YEAR}{MONTH}-{NUMBER}', 'monthly'],
             ['cash_disbursement', 'CD', 'CD-{YEAR}{MONTH}-{NUMBER}', 'monthly'],
             ['stock_adjustment', 'SA', 'SA-{YEAR}{MONTH}-{NUMBER}', 'monthly'],
+            ['fixed_asset', 'AST', 'AST-{YEAR}{MONTH}-{NUMBER}', 'monthly'],
             ['assembly', 'ASM', 'ASM-{YEAR}{MONTH}-{NUMBER}', 'monthly'],
         ];
         foreach ($formats as [$type, $prefix, $fmt, $reset]) {

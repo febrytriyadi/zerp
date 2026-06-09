@@ -25,6 +25,7 @@ class RolePermissionSeeder extends Seeder
             'received-goods', 'purchase-invoice', 'purchase-return', 'supplier-payment',
             'transfer', 'stock-opname', 'stock-adjustment',
             'assembly', 'inventory-movement',
+            'fixed-asset',
             'report', 'dashboard', 'user', 'role',
         ];
 
@@ -53,6 +54,8 @@ class RolePermissionSeeder extends Seeder
             'customer.read','supplier.read',
             'report.read','dashboard.read',
             'chart-of-account.read','fiscal-period.read',
+            'fixed-asset.create','fixed-asset.read','fixed-asset.update','fixed-asset.delete',
+            'fixed-asset.post','fixed-asset.void',
         ])->pluck('name'));
 
         $accountingStaff = Role::firstOrCreate(['name' => 'Accounting Staff', 'guard_name' => 'web']);

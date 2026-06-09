@@ -91,6 +91,38 @@ class ChartOfAccountSeeder extends Seeder
                 'company_id' => $companyId, 'code' => '1-2041', 'name' => 'Akumulasi Penyusutan Peralatan',
                 'type' => 'asset', 'normal_balance' => 'kredit', 'is_header' => false, 'level' => 2, 'parent_code' => '1-2000',
             ],
+            [
+                'company_id' => $companyId, 'code' => '1-2050', 'name' => 'Komputer',
+                'type' => 'asset', 'normal_balance' => 'debit', 'is_header' => false, 'level' => 2, 'parent_code' => '1-2000',
+            ],
+            [
+                'company_id' => $companyId, 'code' => '1-2051', 'name' => 'Akumulasi Penyusutan Komputer',
+                'type' => 'asset', 'normal_balance' => 'kredit', 'is_header' => false, 'level' => 2, 'parent_code' => '1-2000',
+            ],
+            [
+                'company_id' => $companyId, 'code' => '1-2060', 'name' => 'Furniture & Inventaris',
+                'type' => 'asset', 'normal_balance' => 'debit', 'is_header' => false, 'level' => 2, 'parent_code' => '1-2000',
+            ],
+            [
+                'company_id' => $companyId, 'code' => '1-2061', 'name' => 'Akumulasi Penyusutan Furniture',
+                'type' => 'asset', 'normal_balance' => 'kredit', 'is_header' => false, 'level' => 2, 'parent_code' => '1-2000',
+            ],
+            [
+                'company_id' => $companyId, 'code' => '1-2070', 'name' => 'Mesin',
+                'type' => 'asset', 'normal_balance' => 'debit', 'is_header' => false, 'level' => 2, 'parent_code' => '1-2000',
+            ],
+            [
+                'company_id' => $companyId, 'code' => '1-2071', 'name' => 'Akumulasi Penyusutan Mesin',
+                'type' => 'asset', 'normal_balance' => 'kredit', 'is_header' => false, 'level' => 2, 'parent_code' => '1-2000',
+            ],
+            [
+                'company_id' => $companyId, 'code' => '1-2080', 'name' => 'Aset Lainnya',
+                'type' => 'asset', 'normal_balance' => 'debit', 'is_header' => false, 'level' => 2, 'parent_code' => '1-2000',
+            ],
+            [
+                'company_id' => $companyId, 'code' => '1-2081', 'name' => 'Akumulasi Penyusutan Aset Lainnya',
+                'type' => 'asset', 'normal_balance' => 'kredit', 'is_header' => false, 'level' => 2, 'parent_code' => '1-2000',
+            ],
             // ===== KEWAJIBAN LANCAR (2-1000) =====
             [
                 'company_id' => $companyId, 'code' => '2-1000', 'name' => 'Kewajiban Lancar',

@@ -9,6 +9,7 @@ use App\Http\Controllers\Master\SupplierController;
 use App\Http\Controllers\Master\ProductController;
 use App\Http\Controllers\Master\WarehouseController;
 use App\Http\Controllers\Finance\CashReceiptController;
+use App\Http\Controllers\Finance\AssetController;
 use App\Http\Controllers\Finance\CashDisbursementController;
 use App\Http\Controllers\Accounting\JournalEntryController;
 use App\Http\Controllers\Sales\SalesQuotationController;
@@ -76,6 +77,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('finance/cash-disbursements/{cashDisbursement}/reject', [CashDisbursementController::class, 'reject'])->name('cash-disbursements.reject');
         Route::post('finance/cash-disbursements/{cashDisbursement}/post', [CashDisbursementController::class, 'post'])->name('cash-disbursements.post');
         Route::post('finance/cash-disbursements/{cashDisbursement}/void', [CashDisbursementController::class, 'void'])->name('cash-disbursements.void');
+
+        Route::resource('finance/assets', AssetController::class);
+        Route::post('finance/assets/{asset}/calculate-depreciation', [AssetController::class, 'calculateDepreciation'])->name('assets.calculate-depreciation');
+        Route::post('finance/assets/{asset}/sell', [AssetController::class, 'sell'])->name('assets.sell');
+        Route::post('finance/assets/{asset}/retire', [AssetController::class, 'retire'])->name('assets.retire');
+        Route::post('finance/assets/{asset}/revalue', [AssetController::class, 'revalue'])->name('assets.revalue');
     });
 
     // Accounting
